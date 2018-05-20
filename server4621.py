@@ -29,8 +29,6 @@ def handleClient(conn, addr):
 
     HTTPheaders = [x.split(' ') for idx, x in enumerate(httpReq) if idx <
                    end_of_header]
-    print(HTTPheaders)
-    # HTTPBody = ''.join(httpReq[end_of_header + 1:])
 
     try:
         reqLine = HTTPheaders[0]
@@ -86,7 +84,6 @@ def handleClient(conn, addr):
                 rM += str(hex(len(i))).encode('ascii')[2:] + b'\r\n'
                 rM += i + b'\r\n'
             rM += b'0\r\n\r\n'
-            # print(rM)
             conn.send(rM)
 
         except FileNotFoundError:
